@@ -51,7 +51,7 @@ namespace AinashiLibraryCSharp.ByteCodeMap
         #region Infomation Property
 
         /// <summary>
-        /// このモジュールが管理している最上位ノードの一覧を取得します。
+        /// このモジュールが管理している最上位ノードの一覧を取得します。編集可能かどうかは<typeparams cref="NodeType/>によって変化します。
         /// </summary>
         new ReadOnlyCollection<NodeType> RootNodes { get; }
 
@@ -82,13 +82,44 @@ namespace AinashiLibraryCSharp.ByteCodeMap
         bool isReadOnly { get; }
 
         /// <summary>
-        /// このモジュールが管理している最上位ノードの一覧を取得します。
+        /// このモジュールが管理している最上位ノードの一覧を取得します。編集することはできません。
         /// </summary>
         ReadOnlyCollection<INodeViewer> RootNodes { get; }
 
         #endregion
 
 
+    }
+    
+    /// <summary>
+    /// <see cref="ICodeMapModule{NodeType}"/>及び<see cref="ICodeMapModule"/>の拡張メソッド群。
+    /// </summary>
+    public static class ICodeMapModuleExtensions
+    {
+        
+        publlic static byte[] OutputByteData(this ICodeMapModule module)
+        {
+            
+            using MemoryStream memory = new MemoryStream();
+            var roots = RootNodes;
+            
+            foreach (var root in roots)                
+            {
+                
+                // TODO:Call method to write to stream
+                
+            }
+            
+            return memory.ToArray();
+            
+        }
+        
+        public static void WriteTo(this ICodeMapModule module, Stream stream)
+        {
+            
+            // TODO: Algorithm to write data to stream
+        }
+        
     }
 
 }
