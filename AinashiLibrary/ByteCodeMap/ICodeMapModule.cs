@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -12,7 +13,7 @@ namespace AinashiLibraryCSharp.ByteCodeMap
     /// <summary>
     /// バイトコードマップの各ノードを包括的に管理するクラス用のインターフェース。
     /// </summary>
-    interface ICodeMapModule<NodeType> : ICodeMapModule
+    public interface ICodeMapModule<NodeType> : ICodeMapModule
         where NodeType: INodeViewer
     {
 
@@ -64,7 +65,7 @@ namespace AinashiLibraryCSharp.ByteCodeMap
     /// <summary>
     /// <see cref="ICodeMapModule{NodeType}"/>の共通実装。
     /// </summary>
-    interface ICodeMapModule
+    public interface ICodeMapModule
     {
 
 
@@ -97,27 +98,25 @@ namespace AinashiLibraryCSharp.ByteCodeMap
     public static class ICodeMapModuleExtensions
     {
         
-        publlic static byte[] OutputByteData(this ICodeMapModule module)
+        public static byte[] OutputByteData(this ICodeMapModule module)
         {
             
             using MemoryStream memory = new MemoryStream();
-            var roots = RootNodes;
-            
-            foreach (var root in roots)                
-            {
-                
-                // TODO:Call method to write to stream
-                
-            }
-            
+
+            module.WriteTo(memory);
+
             return memory.ToArray();
             
         }
         
         public static void WriteTo(this ICodeMapModule module, Stream stream)
         {
-            
-            // TODO: Algorithm to write data to stream
+
+            var rootnodes = module.RootNodes;
+
+            foreach (var node in rootnodes)
+                node.WriteToStream(stream);
+
         }
         
     }
