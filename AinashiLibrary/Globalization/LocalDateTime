@@ -1,0 +1,75 @@
+using System;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+
+#nullable enable
+
+namespace AinashiLibrary.Globalization
+{
+    
+    public class LocalDateTime
+    {
+        
+        // todo: comment of field separator
+        
+        /// <summary>
+        /// タイムゾーン情報。
+        /// </summary>
+        public TimeZoneInfo timeZone  { get; set; }
+        
+        /// <summary>
+        /// 日時情報。
+        /// <summary>
+        public DateTime     dateTime　{ get; set; }
+        
+        /// <summary>
+        /// 終日かどうかを指定する
+        /// </summary>
+        public bool         isAllDay  { get; set; }
+        
+        // todo: comment of constractor separator
+        
+        
+        public LocalDateTime(in DateTime dateTime, in DateTimeKind? kind = null)
+        {
+            
+            
+            switch (kind)
+            {
+                
+                case null:
+                    
+                    switch (dateTime.Kind)
+                    {
+                        case DateTimeKind.Local:
+                            this.timeZone = TimeZoneInfo.Local;
+                            break;
+                        case DateTimeKind.Utc:
+                            this.timeZone = TimeZoneInfo.Utc;
+                            break;
+                            
+                        case default:
+                            throw new InitializeException("カルチャ情報を記述してください。");
+                            break;
+                    }
+                    break;
+                    
+                case DateTimeKind.Local:
+                    this.timeZone = TimeZoneInfo.Local;
+                    break;
+                
+                case DateTimeKind.Utc:
+                    this.timeZone = TimeZoneInfo.Utc;
+                    break;
+                    
+                case default:
+                    throw new InitializeException("カルチャ情報を記述してください。");
+                    break;
+            }
+            
+            this.dateTime = new DateTime(dateTime.Ticks, DateTimeKind.Unspecified);
+        }
+    }
+    
+}
