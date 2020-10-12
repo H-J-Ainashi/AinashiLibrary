@@ -70,6 +70,13 @@ namespace AinashiLibrary.Globalization
             
             this.dateTime = new DateTime(dateTime.Ticks, DateTimeKind.Unspecified);
         }
+        
+        
+        public LocalDateTime(in DateTime dateTime, in TimeZoneInfo timeZone)
+        {
+            this.timeZone = timeZone;
+            this.dateTime = dateTime;
+        }
     }
     
 }
