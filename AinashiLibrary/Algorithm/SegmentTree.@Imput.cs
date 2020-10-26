@@ -19,24 +19,26 @@ namespace AinashiLibraryCSharp.Algorithm
                 throw new ArgumentOutOfRangeException("範囲外の添え字を指定されました。");
 
             else if (index == Count)
-            {
+                AddLeaf(value);
 
-                // TODO: Add Method
+            else
+                SolveWithImput(index, value);
+        }
 
-            }
+        private void SolveWithImput(int index, ImputType value)
+        {
 
-            else 
-            { 
-                var dim_i = 0;
+            var dim_i = 0;
 
-                // 葉へ代入
-                TreeArray[dim_i][index].value = ImputConverter(value);
+            // 葉へ代入
+            TreeArray[dim_i][index] = (ImputConverter(value), true);
 
-                // 枝へ代入
-                for (++dim_i, index >>= 1; dim_i >= 0; ++dim_i, index >>= 1)
-                    TreeArray[dim_i][index].isValid = false;
+            // 枝へ代入
+            for (++dim_i, index >>= 1; dim_i < Dims; ++dim_i, index >>= 1)
+                if (TreeArray[dim_i][index].isValid) TreeArray[dim_i][index] = (TreeArray[dim_i][index].value, false);
+                else return;
 
-            }
+
         }
 
     }

@@ -52,7 +52,7 @@ namespace AinashiLibraryCSharp.Algorithm
         /// <summary>
         /// セグメント木が実際に格納されている配列。
         /// </summary>
-        private (EditType value, bool isValid)[][] TreeArray;
+        private List<List<(EditType value, bool isValid)>> TreeArray;
 
         /// <summary>
         /// セグメント木上で値が含まれていない最下位の葉に対して割り当てる規定値。この値にはセグメント比較時に無視する、または無視できる値とすることが好ましいです。

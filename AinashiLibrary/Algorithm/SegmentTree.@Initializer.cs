@@ -28,11 +28,11 @@ namespace AinashiLibraryCSharp.Algorithm
             int lstDim = Dims - 1;
 
             // 葉と枝の初期化
-            TreeArray = new (EditType value, bool isValid)[Dims][];
+            TreeArray = new List<List<(EditType value, bool isValid)>>();
             for (int i = 0, l = 1 << (lstDim - i); i < Dims; ++i, l >>= 1)
             {
 
-                TreeArray[i] = new (EditType value, bool isValid)[l];
+                TreeArray[i] = new List<(EditType value, bool isValid)>(l);
 
             }
 

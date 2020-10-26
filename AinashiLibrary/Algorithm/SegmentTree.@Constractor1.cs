@@ -33,7 +33,7 @@ namespace AinashiLibraryCSharp.Algorithm
             this.ReverseOutputConverter = null;
             this.DefaultValue = defaultValue;
 
-            this.TreeArray = new (EditType value, bool isValid)[][]{ };
+            this.TreeArray = new List<List<(EditType value, bool isValid)>>{ };
 
             // セグメント木の初期化
             Initializer(imputs is null ? new ImputType[] { } : imputs);
@@ -63,7 +63,7 @@ namespace AinashiLibraryCSharp.Algorithm
             this.ReverseOutputConverter = null;
             this.DefaultValue = imputConv(defaultValue);
 
-            this.TreeArray = new (EditType value, bool isValid)[][] { };
+            this.TreeArray = new List<List<(EditType value, bool isValid)>> { };
 
             // セグメント木の初期化
             Initializer(imputs is null ? new ImputType[] { } : imputs);

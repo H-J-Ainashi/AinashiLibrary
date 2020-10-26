@@ -19,12 +19,12 @@ namespace AinashiLibraryCSharp.Algorithm
             if (!TreeArray[dimension][index].isValid)
             {
 
-                TreeArray[dimension][index].value = 
+                TreeArray[dimension][index] = 
+                    (
                     Selector(
                         ComputeBranch(dimension - 1, (index << 1)), 
-                        ComputeBranch(dimension - 1, (index << 1) + 1));
-
-                TreeArray[dimension][index].isValid = true;
+                        ComputeBranch(dimension - 1, (index << 1) + 1)), 
+                    true);
 
             }
             return TreeArray[dimension][index].value;
