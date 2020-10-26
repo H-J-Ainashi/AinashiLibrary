@@ -17,7 +17,6 @@ namespace AinashiLibraryCSharp.ByteCodeMap
         where NodeType: INodeViewer
     {
 
-
         /* *'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'* *\
          * 
          * Inherit from ICodeMapModule(non-generics)
@@ -52,11 +51,9 @@ namespace AinashiLibraryCSharp.ByteCodeMap
         #region Infomation Property
 
         /// <summary>
-        /// このモジュールが管理している最上位ノードの一覧を取得します。編集可能かどうかは<typeparams cref="NodeType/>によって変化します。
+        /// このモジュールが管理している最上位ノードの一覧を取得します。編集可能かどうかは<typeparams cref="NodeType"/>によって変化します。
         /// </summary>
         new ReadOnlyCollection<NodeType> RootNodes { get; }
-
-
 
         #endregion
 
@@ -98,6 +95,11 @@ namespace AinashiLibraryCSharp.ByteCodeMap
     public static class ICodeMapModuleExtensions
     {
         
+        /// <summary>
+        /// <see cref="ICodeMapModule"/>からデータをバイトデータとして取得します。
+        /// </summary>
+        /// <param name="module">データの取得元である<see cref="ICodeMapModule"/>。</param>
+        /// <returns></returns>
         public static byte[] OutputByteData(this ICodeMapModule module)
         {
             
@@ -109,6 +111,11 @@ namespace AinashiLibraryCSharp.ByteCodeMap
             
         }
         
+        /// <summary>
+        /// ストリームに<paramref name="module"/>から取得したバイトデータを現在位置から書き込み、書き込んだ分だけポジションを移動させます。
+        /// </summary>
+        /// <param name="module">データの取得元である<see cref="ICodeMapModule"/>。</param>
+        /// <param name="stream">データの書き込み先であるストリーム。</param>
         public static void WriteTo(this ICodeMapModule module, Stream stream)
         {
 
