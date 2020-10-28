@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
+#nullable enable
+
 namespace AinashiLibraryCSharp.Algorithm
 {
     public partial class SegmentTree<ImputType, EditType, OutputType>

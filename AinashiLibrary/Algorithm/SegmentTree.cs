@@ -50,12 +50,13 @@ namespace AinashiLibraryCSharp.Algorithm
         readonly private Func<OutputType, EditType>? ReverseOutputConverter;
 
         /// <summary>
-        /// セグメント木が実際に格納されている配列。
+        /// セグメント木が実際に格納されている配列。有効値、向地の判断もここで行います。
         /// </summary>
-        private List<List<(EditType value, bool isValid)>> TreeArray;
+        protected List<List<(EditType value, bool isValid)>> TreeArray { get; private set; }
 
         /// <summary>
-        /// セグメント木上で値が含まれていない最下位の葉に対して割り当てる規定値。この値にはセグメント比較時に無視する、または無視できる値とすることが好ましいです。
+        /// セグメント木上で値が含まれていない最下位の葉に対して割り当てる規定値。
+        /// この値にはセグメント比較時に無視する、または無視できる値とすることが好ましいです。
         /// </summary>
         readonly public EditType DefaultValue;
 
@@ -67,7 +68,7 @@ namespace AinashiLibraryCSharp.Algorithm
         /// <summary>
         /// セグメント木の次元数を取得します。
         /// </summary>
-        private int Dims;
+        protected int Dims { get; private set; }
 
         #endregion
 

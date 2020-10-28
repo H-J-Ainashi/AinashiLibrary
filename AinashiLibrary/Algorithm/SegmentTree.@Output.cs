@@ -14,8 +14,8 @@ namespace AinashiLibraryCSharp.Algorithm
         /// <param name="minIndex">計算結果を出力するために使用する配列の開始インデックス。</param>
         /// <param name="maxIndex">計算結果を出力するために使用する配列の終了インデックス。</param>
         /// <returns></returns>
-        public OutputType Output(int minIndex, int maxIndex)
-            => OutputConverter(SolveWithOutput(minIndex, maxIndex, Dims - 1, 0));
+        public virtual OutputType Output(int minIndex, int maxIndex)
+            => (minIndex == maxIndex ? OutputConverter(TreeArray[0][minIndex].value) : OutputConverter(SolveWithOutput(minIndex, maxIndex, Dims - 1, 0)));
 
         /// <summary>
         /// 指定した枝と閉区間[<paramref name="minIndex"/>, <paramref name="maxIndex"/>]の共通部分における計算結果を取得します。

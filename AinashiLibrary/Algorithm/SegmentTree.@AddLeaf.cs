@@ -11,14 +11,14 @@ namespace AinashiLibraryCSharp.Algorithm
         /// <summary>
         /// セグメント木の葉を一枚追加します。
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">セグメント木に追加する葉。</param>
         public void AddLeaf(ImputType value)
         {
 
             if (TreeArray[0].Count == Count)
                 ExpandSegment();
 
-            Imput(Count++, value);
+            SolveWithImput(Count++, value);
 
         }
 

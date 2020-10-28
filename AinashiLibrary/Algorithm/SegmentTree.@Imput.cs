@@ -12,7 +12,7 @@ namespace AinashiLibraryCSharp.Algorithm
         /// </summary>
         /// <param name="index">代入先の0から始まるインデックス。</param>
         /// <param name="value">代入する値。</param>
-        public void Imput(int index, ImputType value)
+        public virtual void Imput(int index, ImputType value)
         {
 
             if (index < 0 || index > Count)
